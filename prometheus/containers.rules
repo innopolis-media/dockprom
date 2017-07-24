@@ -1,17 +1,183 @@
-ALERT hfm_site_stage_down
-  IF absent(container_tasks_state{instance="10.8.0.14:8080", name="hfm-site",state="running"})
-  FOR 10s
+ALERT consul_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="consul"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-site (stage) down",
-    description= "hfm-site on stage-1 is down for more than 10 seconds."
+    summary= "consul (prod) down",
+    description= "consul on prod-1 is down for more than 30 seconds."
+  }
+
+ALERT mysql_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-mysql"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-mysql (prod) down",
+    description= "hfm-mysql on prod-1 is down for more than 30 seconds."
+  }
+  
+ALERT redis_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-redis"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-redis (prod) down",
+    description= "hfm-redis on prod-1 is down for more than 30 seconds."
+  }
+  
+ALERT mongo_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-mongo"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-mongo (prod) down",
+    description= "hfm-mongo on prod-1 is down for more than 30 seconds."
+  }
+  
+ALERT rabbit_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-rabbit"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-rabbit (prod) down",
+    description= "hfm-rabbit on prod-1 is down for more than 30 seconds."
+  }
+  
+ALERT sphinx_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-sphinx"})
+  FOR 10m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-sphinx (prod) down",
+    description= "hfm-sphinx on prod-1 is down for more than 10 minutes."
+  }
+  
+ALERT micro_api_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-micro-api"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-micro-api (prod) down",
+    description= "hfm-micro-api on prod-1 is down for more than 30 seconds."
   }
 
 ALERT hfm_site_prod_down
-  IF absent(container_tasks_state{instance="10.8.0.18:8080", name="hfm-site",state="running"})
-  FOR 10s
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-site"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "hfm-site (prod) down",
-    description= "hfm-site on prod-1 is down for more than 10 seconds."
+    description= "hfm-site on prod-1 is down for more than 30 seconds."
+  }
+
+ALERT hfm_median_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-median"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-median (prod) down",
+    description= "hfm-median on prod-1 is down for more than 30 seconds."
+  }
+
+ALERT hfm_admin_prod_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-admin"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-admin (prod) down",
+    description= "hfm-admin on prod-1 is down for more than 30 seconds."
+  }
+  
+  
+  
+  
+  
+ALERT consul_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="consul"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "consul (stage) down",
+    description= "consul on stage-1 is down for more than 30 seconds."
+  }
+
+ALERT mysql_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-mysql"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-mysql (stage) down",
+    description= "hfm-mysql on stage-1 is down for more than 30 seconds."
+  }
+  
+ALERT redis_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-redis"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-redis (stage) down",
+    description= "hfm-redis on stage-1 is down for more than 30 seconds."
+  }
+  
+ALERT mongo_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-mongo"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-mongo (stage) down",
+    description= "hfm-mongo on stage-1 is down for more than 30 seconds."
+  }
+  
+ALERT rabbit_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-rabbit"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-rabbit (stage) down",
+    description= "hfm-rabbit on stage-1 is down for more than 30 seconds."
+  }
+  
+ALERT sphinx_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-sphinx"})
+  FOR 10m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-sphinx (stage) down",
+    description= "hfm-sphinx on stage-1 is down for more than 10 minutes."
+  }
+  
+ALERT micro_api_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-micro-api"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-micro-api (stage) down",
+    description= "hfm-micro-api on stage-1 is down for more than 30 seconds."
+  }
+
+ALERT hfm_site_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-site"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-site (stage) down",
+    description= "hfm-site on stage-1 is down for more than 30 seconds."
+  }
+
+ALERT hfm_median_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-median"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-median (stage) down",
+    description= "hfm-median on stage-1 is down for more than 30 seconds."
+  }
+
+ALERT hfm_admin_stage_down
+  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-admin"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "hfm-admin (stage) down",
+    description= "hfm-admin on stage-1 is down for more than 30 seconds."
   }

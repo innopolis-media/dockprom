@@ -20,7 +20,8 @@ services:
       - '-config.file=/etc/prometheus/prometheus.yml'
       - '-storage.local.path=/prometheus'
       - '-alertmanager.url=http://alertmanager:9093'
-      - '-storage.local.memory-chunks=100000'
+      - '-storage.local.memory-chunks=500000'
+      - '-query.staleness-delta=5m'
     restart: unless-stopped
     expose:
       - 9090
