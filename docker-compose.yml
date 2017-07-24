@@ -21,7 +21,7 @@ services:
       - '-storage.local.path=/prometheus'
       - '-alertmanager.url=http://alertmanager:9093'
       - '-storage.local.memory-chunks=500000'
-      - '-query.staleness-delta=5m'
+      - '-query.staleness-delta=1m'
     restart: unless-stopped
     expose:
       - 9090
@@ -62,7 +62,7 @@ services:
       org.label-schema.group: "monitoring"
 
   cadvisor:
-    image: google/cadvisor:v0.26.1
+    image: sha1/cadvisor
     container_name: cadvisor
     volumes:
       - /:/rootfs:ro

@@ -16,20 +16,46 @@ rule_files:
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
   - job_name: 'nodeexporter'
-    scrape_interval: 5s
     static_configs:
-      - targets: ['nodeexporter:9100', '10.8.0.14:9100', '10.8.0.18:9100']
+      - targets: ['nodeexporter:9100']
+      - labels:
+          env: dev-1
 
   - job_name: 'cadvisor'
-    scrape_interval: 5s
     static_configs:
-      - targets: ['cadvisor:8080', '10.8.0.14:8080', '10.8.0.18:8080']
+      - targets: ['cadvisor:8080']
+      - labels:
+          env: dev-1
+ 
+  - job_name: 'nodeexporter-prod'
+    static_configs:
+      - targets: ['10.8.0.18:9100']
+      - labels:
+          env: prod-1
+
+  - job_name: 'cadvisor-prod'
+    static_configs:
+      - targets: ['10.8.0.18:8080']
+      - labels:
+          env: prod-1
+ 
+  - job_name: 'nodeexporter-stage'
+    static_configs:
+      - targets: ['10.8.0.14:9100']
+      - labels:
+          env: stage-1
+
+  - job_name: 'cadvisor-stage'
+    static_configs:
+      - targets: ['10.8.0.14:8080']
+      - labels:
+          env: stage-1
 
   - job_name: 'prometheus'
-    scrape_interval: 10s
     static_configs:
       - targets: ['localhost:9090']
-
+      - labels:
+          env: dev-1
 #  - job_name: 'nginx'
 #    scrape_interval: 10s
 #    static_configs:

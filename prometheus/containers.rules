@@ -1,183 +1,168 @@
-ALERT consul_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="consul"})
-  FOR 1m
+ALERT Consul_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="consul",job="cadvisor-prod"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "consul (prod) down",
-    description= "consul on prod-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
+  
+ALERT MicroApi_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-micro-api",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT MySql_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-mysql",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Rabbit_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-rabbit",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Redis_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-redis",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Mongo_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-mongo",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Site_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-site",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Median_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-median",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+ALERT Admin_Is_Down_Production
+  IF absent(container_memory_usage_bytes{name="hfm-admin",job="cadvisor-prod"})
+  FOR 30s
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
+  }
+  
+  
+  
 
-ALERT mysql_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-mysql"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-mysql (prod) down",
-    description= "hfm-mysql on prod-1 is down for more than 1m"
-  }
-  
-ALERT redis_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-redis"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-redis (prod) down",
-    description= "hfm-redis on prod-1 is down for more than 1m"
-  }
-  
-ALERT mongo_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-mongo"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-mongo (prod) down",
-    description= "hfm-mongo on prod-1 is down for more than 1m"
-  }
-  
-ALERT rabbit_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-rabbit"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-rabbit (prod) down",
-    description= "hfm-rabbit on prod-1 is down for more than 1m"
-  }
-  
-ALERT sphinx_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-sphinx"})
-  FOR 10m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-sphinx (prod) down",
-    description= "hfm-sphinx on prod-1 is down for more than 10 minutes."
-  }
-  
-ALERT micro_api_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-micro-api"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-micro-api (prod) down",
-    description= "hfm-micro-api on prod-1 is down for more than 1m"
-  }
 
-ALERT hfm_site_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-site"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-site (prod) down",
-    description= "hfm-site on prod-1 is down for more than 1m"
-  }
 
-ALERT hfm_median_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-median"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-median (prod) down",
-    description= "hfm-median on prod-1 is down for more than 1m"
-  }
 
-ALERT hfm_admin_prod_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.18:8080", name="hfm-admin"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "hfm-admin (prod) down",
-    description= "hfm-admin on prod-1 is down for more than 1m"
-  }
-  
-  
-  
-  
-  
-ALERT consul_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="consul"})
-  FOR 1m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "consul (stage) down",
-    description= "consul on stage-1 is down for more than 1m"
-  }
 
-ALERT mysql_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-mysql"})
-  FOR 1m
+ALERT Consul_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="consul",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-mysql (stage) down",
-    description= "hfm-mysql on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
   
-ALERT redis_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-redis"})
-  FOR 1m
+ALERT MicroApi_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-micro-api",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-redis (stage) down",
-    description= "hfm-redis on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
   
-ALERT mongo_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-mongo"})
-  FOR 1m
+ALERT MySql_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-mysql",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-mongo (stage) down",
-    description= "hfm-mongo on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
   
-ALERT rabbit_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-rabbit"})
-  FOR 1m
+ALERT Rabbit_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-rabbit",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-rabbit (stage) down",
-    description= "hfm-rabbit on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
   
-ALERT sphinx_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-sphinx"})
-  FOR 10m
+ALERT Redis_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-redis",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-sphinx (stage) down",
-    description= "hfm-sphinx on stage-1 is down for more than 10 minutes."
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
   
-ALERT micro_api_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-micro-api"})
-  FOR 1m
+ALERT Mongo_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-mongo",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-micro-api (stage) down",
-    description= "hfm-micro-api on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
-
-ALERT hfm_site_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-site"})
-  FOR 1m
+  
+ALERT Site_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-site",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-site (stage) down",
-    description= "hfm-site on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
-
-ALERT hfm_median_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-median"})
-  FOR 1m
+  
+ALERT Median_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-median",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-median (stage) down",
-    description= "hfm-median on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
-
-ALERT hfm_admin_stage_down
-  IF absent(container_memory_usage_bytes{instance="10.8.0.14:8080", name="hfm-admin"})
-  FOR 1m
+  
+ALERT Admin_Is_Down_Stage
+  IF absent(container_memory_usage_bytes{name="hfm-admin",job="cadvisor-stage"})
+  FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
-    summary= "hfm-admin (stage) down",
-    description= "hfm-admin on stage-1 is down for more than 1m"
+    summary= "{{ $labels.name }} ({{ $labels.env }}) down",
+    description= "{{ $labels.name }} on {{ $labels.env }} is down for more than 30s"
   }
