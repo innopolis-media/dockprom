@@ -159,36 +159,9 @@ ALERT MicroApi_Is_Down_Stage
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
     description= "{{ $labels.name }} on (stage-1) is down for more than 30s"
   }
-  
-ALERT MySql_Is_Down_Stage
-  IF absent(container_memory_usage_bytes{name="hfm-mysql",instance="10.8.0.14:8080",job="cadvisor"})
-  FOR 30s
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 30s"
-  }
-  
-ALERT Rabbit_Is_Down_Stage
-  IF absent(container_memory_usage_bytes{name="hfm-rabbit",instance="10.8.0.14:8080",job="cadvisor"})
-  FOR 30s
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 30s"
-  }
-  
+
 ALERT Redis_Is_Down_Stage
   IF absent(container_memory_usage_bytes{name="hfm-redis",instance="10.8.0.14:8080",job="cadvisor"})
-  FOR 30s
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 30s"
-  }
-  
-ALERT Mongo_Is_Down_Stage
-  IF absent(container_memory_usage_bytes{name="hfm-mongo",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
