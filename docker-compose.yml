@@ -21,7 +21,7 @@ services:
       - '-storage.local.path=/prometheus'
       - '-alertmanager.url=http://alertmanager:9093'
       - '-storage.local.memory-chunks=500000'
-      - '-query.staleness-delta=5m'
+      - '-query.staleness-delta=2m'
     restart: unless-stopped
     expose:
       - 9090
