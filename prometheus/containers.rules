@@ -152,7 +152,7 @@ ALERT Consul_Is_Down_Stage
   }
   
 ALERT MicroApi_Is_Down_Stage
-  IF absent(container_memory_usage_bytes{name="hfm-micro-api",instance="10.8.0.14:8080",job="cadvisor"})
+  IF absent(container_memory_usage_bytes{name="micro-api",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 30s
   LABELS { severity = "critical" }
   ANNOTATIONS {
