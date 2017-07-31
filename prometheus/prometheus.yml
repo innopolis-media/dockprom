@@ -1,5 +1,5 @@
 global:
-  scrape_interval:     2s
+  scrape_interval:     5s
   evaluation_interval: 1m
 
   # Attach these labels to any time series or alerts when communicating with
