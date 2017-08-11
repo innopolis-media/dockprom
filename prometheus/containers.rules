@@ -89,8 +89,8 @@ ALERT ArticlePostProcessor_Is_Down_Production
     description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
   }  
   
-ALERT Redirector_Is_Down_Production
-  IF (time() - container_last_seen{name="hfm-redirector",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-redirector",instance="10.8.0.18:8080",job="cadvisor"})
+ALERT UrlShortener_Is_Down_Production
+  IF (time() - container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -207,8 +207,8 @@ ALERT ArticlePostProcessor_Is_Down_Stage
     description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
   }  
   
-ALERT Redirector_Is_Down_Stage
-  IF (time() - container_last_seen{name="hfm-redirector",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-redirector",instance="10.8.0.14:8080",job="cadvisor"})
+ALERT UrlShortener_Is_Down_Stage
+  IF (time() - container_last_seen{name="hfm-urlshortener",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-urlshortener",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
