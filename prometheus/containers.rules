@@ -149,7 +149,7 @@ ALERT Consul_Is_Down_Stage
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
   
 ALERT MicroApi_Is_Down_Stage
@@ -158,16 +158,16 @@ ALERT MicroApi_Is_Down_Stage
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
 
 ALERT Redis_Is_Down_Stage
-  IF (time() - container_last_seen{name="hfm-redis",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-redis",instance="10.8.0.14:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="redis-0",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="redis-0",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
   
 ALERT Site_Is_Down_Stage
@@ -176,7 +176,7 @@ ALERT Site_Is_Down_Stage
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
   
 ALERT Median_Is_Down_Stage
@@ -185,7 +185,7 @@ ALERT Median_Is_Down_Stage
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
   
 ALERT Admin_Is_Down_Stage
@@ -194,7 +194,7 @@ ALERT Admin_Is_Down_Stage
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (stage-1) is down for more than 5m"
+    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
   }
   
   
