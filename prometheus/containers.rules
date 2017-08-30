@@ -138,11 +138,6 @@ ALERT Webpush_Is_Down_Production
 
 
 
-
-
-
-
-
 ALERT Consul_Is_Down_Stage
   IF (time() - container_last_seen{name="consul",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="consul",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 5m
@@ -154,15 +149,6 @@ ALERT Consul_Is_Down_Stage
   
 ALERT MicroApi_Is_Down_Stage
   IF (time() - container_last_seen{name="micro-api",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="micro-api",instance="10.8.0.14:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (app-stage-0) is down for more than 5m"
-  }
-
-ALERT Redis_Is_Down_Stage
-  IF (time() - container_last_seen{name="redis-0",instance="10.8.0.14:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="redis-0",instance="10.8.0.14:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
