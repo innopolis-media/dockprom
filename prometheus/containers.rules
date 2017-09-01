@@ -17,42 +17,6 @@ ALERT MicroApi_Is_Down_Production
     description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
   }
   
-ALERT MySql_Is_Down_Production
-  IF (time() - container_last_seen{name="hfm-mysql",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-mysql",instance="10.8.0.18:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
-  }
-  
-ALERT Rabbit_Is_Down_Production
-  IF (time() - container_last_seen{name="hfm-rabbit",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-rabbit",instance="10.8.0.18:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
-  }
-  
-ALERT Redis_Is_Down_Production
-  IF (time() - container_last_seen{name="hfm-redis",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-redis",instance="10.8.0.18:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
-  }
-  
-ALERT Mongo_Is_Down_Production
-  IF (time() - container_last_seen{name="hfm-mongo",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-mongo",instance="10.8.0.18:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (prod-1) is down for more than 5m"
-  }
-  
 ALERT Site_Is_Down_Production
   IF (time() - container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
