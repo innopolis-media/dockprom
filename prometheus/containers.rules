@@ -1,19 +1,107 @@
-ALERT docker_container_is_down_on_production
- 
-  IF (time() - container_last_seen{instance="10.8.0.18:8080",job="cadvisor"}) > 60
+ALERT consul_is_down_on_production
+  IF (time() - container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on prod-docker-0 is down for more than 5m"
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
   }
   
-ALERT docker_container_is_down_on_stage
- 
-  IF (time() - container_last_seen{instance="10.8.0.14:8080",job="cadvisor"}) > 60
+ALERT micro_api_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
     summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on stage-docker-0 is down for more than 5m"
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+
+ALERT site_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+
+ALERT median_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT admin_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT article_pp_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-article-pp",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-article-pp",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT defpub_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT maillist_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+
+ALERT rss_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT ubiqbot_is_down_on_production
+  IF (time() - container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT urlshortener_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
+  }
+  
+ALERT webpush_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"})
+  FOR 5m
+  LABELS { severity = "critical" }
+  ANNOTATIONS {
+    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
+    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
   }
