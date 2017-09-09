@@ -43,8 +43,8 @@ ALERT admin_is_down_on_production
     description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
   }
   
-ALERT article_pp_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-article-pp",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-article-pp",instance="10.8.0.18:8080",job="cadvisor"})
+ALERT ogcleaner_is_down_on_production
+  IF (time() - container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
