@@ -1,5 +1,5 @@
 ALERT consul_is_down_on_production
-  IF (time() - container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -8,7 +8,7 @@ ALERT consul_is_down_on_production
   }
   
 ALERT micro_api_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -17,7 +17,7 @@ ALERT micro_api_is_down_on_production
   }
 
 ALERT site_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-site",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -26,7 +26,7 @@ ALERT site_is_down_on_production
   }
 
 ALERT median_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-median",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -35,7 +35,7 @@ ALERT median_is_down_on_production
   }
   
 ALERT admin_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-admin",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -44,7 +44,7 @@ ALERT admin_is_down_on_production
   }
   
 ALERT ogcleaner_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-ogcleaner",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -53,7 +53,7 @@ ALERT ogcleaner_is_down_on_production
   }
   
 ALERT defpub_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-defpub",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -62,7 +62,7 @@ ALERT defpub_is_down_on_production
   }
   
 ALERT maillist_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-maillist",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -71,7 +71,7 @@ ALERT maillist_is_down_on_production
   }
 
 ALERT rss_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-rss",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -80,7 +80,7 @@ ALERT rss_is_down_on_production
   }
   
 ALERT ubiqbot_is_down_on_production
-  IF (time() - container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -89,7 +89,7 @@ ALERT ubiqbot_is_down_on_production
   }
   
 ALERT urlshortener_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-urlshortener",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -98,7 +98,7 @@ ALERT urlshortener_is_down_on_production
   }
   
 ALERT webpush_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-webpush",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -107,7 +107,7 @@ ALERT webpush_is_down_on_production
   }
   
 ALERT medianrpc_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-medianrpc",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-medianrpc",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-medianrpc",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-medianrpc",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
@@ -116,7 +116,7 @@ ALERT medianrpc_is_down_on_production
   }
   
 ALERT adnative_is_down_on_production
-  IF (time() - container_last_seen{name="hfm-adnative",instance="10.8.0.18:8080",job="cadvisor"}) > 60 or absent(container_last_seen{name="hfm-adnative",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-adnative",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-adnative",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
