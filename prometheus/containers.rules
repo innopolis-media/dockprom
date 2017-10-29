@@ -1,12 +1,3 @@
-ALERT consul_is_down_on_production
-  IF (time() - container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="consul",instance="10.8.0.18:8080",job="cadvisor"})
-  FOR 5m
-  LABELS { severity = "critical" }
-  ANNOTATIONS {
-    summary= "{{ $labels.name }} ({{ $labels.instance }}) down",
-    description= "{{ $labels.name }} on (prod-docker-0) is down for more than 5m"
-  }
-  
 ALERT micro_api_is_down_on_production
   IF (time() - container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-micro-api",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
