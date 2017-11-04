@@ -71,7 +71,7 @@ ALERT rss_is_down_on_production
   }
   
 ALERT ubiqbot_is_down_on_production
-  IF (time() - container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="ubiqbot",instance="10.8.0.18:8080",job="cadvisor"})
+  IF (time() - container_last_seen{name="hfm-ubiqbot",instance="10.8.0.18:8080",job="cadvisor"}) > 100 or absent(container_last_seen{name="hfm-ubiqbot",instance="10.8.0.18:8080",job="cadvisor"})
   FOR 5m
   LABELS { severity = "critical" }
   ANNOTATIONS {
