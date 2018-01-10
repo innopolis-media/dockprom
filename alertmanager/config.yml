@@ -8,4 +8,4 @@ route:
 receivers:
     - name: 'email'
       email_configs:
-      - to: 'akucherov@hightech.fm'
+      - to: 'akucherov@hightech.fm, oakchurin@hightech.fm, dmaximov@hightech.fm'
